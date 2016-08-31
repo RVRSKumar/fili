@@ -452,7 +452,7 @@ public class DataServlet extends CORSPreflightServlet implements BardConfigResou
         // the queryResultsEmitter emitting a PreResponse (i.e. the system hasn't finished processing the query), then
         // instead of emitting a PreResponse, we emit a JobRow, which triggers all of the asynchronous processing.
         ConnectableObservable<Either<PreResponse, JobRow>> payloadEmitter = queryResultsEmitter
-                .map(Either::<PreResponse, JobRow> left)
+                .map(Either::<PreResponse, JobRow>left)
                 .timeout(
                         asyncAfter,
                         TimeUnit.MILLISECONDS,
