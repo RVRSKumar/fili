@@ -182,7 +182,7 @@ class JobsApiRequestSpec extends Specification {
         TestSubscriber<PreResponse> testSubscriber = new TestSubscriber<>()
         JobsApiRequest apiRequest = new JobsApiRequest(
                 null,
-                "2",
+                "0",
                 "",
                 "",
                 uriInfo,
@@ -195,14 +195,11 @@ class JobsApiRequestSpec extends Specification {
         when: "We start listening to the broadcastChannel and timeout occurs"
         Observable<PreResponse> preResponseObservable = apiRequest.handleBroadcastChannelNotification("ticket1")
 
-        and: "The notification is fired by the broadcastChannel after timeout"
-        Thread.sleep(5)
-        broadcastChannel.publish("ticket1")
-
         and: "we subscribe to the preResponseObservable"
         preResponseObservable.subscribe(testSubscriber)
 
-        then: "preResponseObservable is empty"
+        then: "preResponseObservable is empty (the chain is complete, and no values were sent)"
+        testSubscriber.assertCompleted()
         testSubscriber.assertNoValues()
     }
 
