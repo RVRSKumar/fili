@@ -14,6 +14,7 @@ import com.yahoo.bard.webservice.jobs.JobPayloadBuilder
 import com.yahoo.bard.webservice.jobs.PreResponseStore
 import com.yahoo.bard.webservice.jobs.PreResponseTestingUtils
 import com.yahoo.bard.webservice.jobs.SimpleBroadcastChannel
+import com.yahoo.bard.webservice.util.ReactiveTestUtils
 
 import rx.Observable
 import rx.observers.TestSubscriber
@@ -199,7 +200,7 @@ class JobsApiRequestSpec extends Specification {
         preResponseObservable.subscribe(testSubscriber)
 
         then: "preResponseObservable is empty (the chain is complete, and no values were sent)"
-        testSubscriber.assertCompleted()
+        ReactiveTestUtils.assertCompletedWithoutError(testSubscriber)
         testSubscriber.assertNoValues()
     }
 
