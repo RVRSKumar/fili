@@ -68,7 +68,7 @@ public class JobsApiRequest extends ApiRequest {
     }
 
     /**
-     * Return an Observable over the Map representing the job to be returned to the user.
+     * Returns an Observable over the Map representing the job to be returned to the user.
      *
      * @param ticket  The ticket that uniquely identifies the job
      *
@@ -112,9 +112,9 @@ public class JobsApiRequest extends ApiRequest {
     }
 
     /**
-     * Return an Observable containing a stream of job payloads for all the async in the ApiJobStore. If, for any JobRow,
-     * the mapping from JobRow to job view fails, an Observable over JobRequestFailedException is returned.
-     * If the ApiJobStore is empty, we return an empty Observable.
+     * Returns an Observable containing a stream of job payloads for all the jobs in the ApiJobStore. If, for any
+     * JobRow, the mapping from JobRow to job view fails, an Observable over JobRequestFailedException is returned. If
+     * the ApiJobStore is empty, we return an empty Observable.
      *
      * @return An Observable containing a stream of Maps representing the job to be returned to the user
      */

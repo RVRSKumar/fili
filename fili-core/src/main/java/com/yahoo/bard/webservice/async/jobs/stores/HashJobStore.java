@@ -12,7 +12,7 @@ import java.util.Map;
 /**
  * An ApiJobStore backed by an in-memory map. This is meant as a stub implementation for
  * testing and playing purposes. It is _not_ meant to be used in production. For one, it stores the ticket
- * information in memory, which is not durable. For another, it does not attempt to cleanup sufficiently old async,
+ * information in memory, which is not durable. For another, it does not attempt to cleanup sufficiently old jobs,
  * so its memory footprint will grow until the system is rebooted.
  */
 public class HashJobStore implements ApiJobStore {

@@ -75,9 +75,9 @@ class JobsApiRequestSpec extends Specification {
         TestSubscriber<Map<String, String>> getSubscriber = new TestSubscriber<>()
         Map<String, String> job = [
                 query: "https://localhost:9998/v1/data/QUERY",
-                results: "https://localhost:9998/v1/async/ticket1/results",
-                syncResults: "https://localhost:9998/v1/async/ticket1/results?asyncAfter=never",
-                self: "https://localhost:9998/v1/async/ticket1",
+                results: "https://localhost:9998/v1/jobs/ticket1/results",
+                syncResults: "https://localhost:9998/v1/jobs/ticket1/results?asyncAfter=never",
+                self: "https://localhost:9998/v1/jobs/ticket1",
                 status: "success",
                 jobTicket: "ticket1",
                 dateCreated: "2016-01-01"

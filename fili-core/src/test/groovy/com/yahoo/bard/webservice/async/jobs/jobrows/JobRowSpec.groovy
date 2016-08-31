@@ -2,6 +2,12 @@
 // Licensed under the terms of the Apache license. Please see LICENSE file distributed with this work for terms.
 package com.yahoo.bard.webservice.async.jobs.jobrows
 
+import static com.yahoo.bard.webservice.async.jobs.JobTestUtils.DATE_CREATED_DATA
+import static com.yahoo.bard.webservice.async.jobs.JobTestUtils.DATE_UPDATED_DATA
+import static com.yahoo.bard.webservice.async.jobs.JobTestUtils.JOB_TICKET_DATA
+import static com.yahoo.bard.webservice.async.jobs.JobTestUtils.QUERY_DATA
+import static com.yahoo.bard.webservice.async.jobs.JobTestUtils.STATUS_DATA
+import static com.yahoo.bard.webservice.async.jobs.JobTestUtils.USER_ID_DATA
 import static com.yahoo.bard.webservice.async.jobs.jobrows.DefaultJobField.JOB_TICKET
 import static com.yahoo.bard.webservice.async.jobs.jobrows.DefaultJobField.QUERY
 import static com.yahoo.bard.webservice.async.jobs.jobrows.DefaultJobField.STATUS
@@ -30,12 +36,12 @@ class JobRowSpec extends Specification {
 
         and: "The expected map"
         Map<String, String> expectedMap = [
-                jobTicket: JobTestUtils.JOB_TICKET_DATA,
-                query: JobTestUtils.QUERY_DATA,
-                status: JobTestUtils.STATUS_DATA,
-                dateCreated: JobTestUtils.DATE_CREATED_DATA,
-                dateUpdated: JobTestUtils.DATE_UPDATED_DATA,
-                userId: JobTestUtils.USER_ID_DATA
+                jobTicket: JOB_TICKET_DATA,
+                query: QUERY_DATA,
+                status: STATUS_DATA,
+                dateCreated: DATE_CREATED_DATA,
+                dateUpdated: DATE_UPDATED_DATA,
+                userId: USER_ID_DATA
         ]
 
         expect:
@@ -49,12 +55,12 @@ class JobRowSpec extends Specification {
         and: "The expected JSON"
         JsonNode expected = MAPPER.readTree(
                 """{
-                        "query": "$JobTestUtils.QUERY_DATA",
-                        "status": "$JobTestUtils.STATUS_DATA",
-                        "jobTicket": "$JobTestUtils.JOB_TICKET_DATA",
-                        "dateCreated": "$JobTestUtils.DATE_CREATED_DATA",
-                        "dateUpdated": "$JobTestUtils.DATE_UPDATED_DATA",
-                        "userId": "$JobTestUtils.USER_ID_DATA"
+                        "query": "$QUERY_DATA",
+                        "status": "$STATUS_DATA",
+                        "jobTicket": "$JOB_TICKET_DATA",
+                        "dateCreated": "$DATE_CREATED_DATA",
+                        "dateUpdated": "$DATE_UPDATED_DATA",
+                        "userId": "$USER_ID_DATA"
                 }"""
         )
 
@@ -73,9 +79,9 @@ class JobRowSpec extends Specification {
         //Everything is different
         false     | JobTestUtils.buildJobRow(1) | JobTestUtils.buildJobRow(2)
         // Different id fields
-        false     | JobTestUtils.buildJobRow()  | JobTestUtils.buildJobRow([(JOB_TICKET): JobTestUtils.JOB_TICKET_DATA + "!"])
+        false     | JobTestUtils.buildJobRow()  | JobTestUtils.buildJobRow([(JOB_TICKET): JOB_TICKET_DATA + "!"])
         // Different non-id fields
-        false     | JobTestUtils.buildJobRow()  | JobTestUtils.buildJobRow([(QUERY): JobTestUtils.QUERY_DATA + ",aMetric"])
+        false     | JobTestUtils.buildJobRow()  | JobTestUtils.buildJobRow([(QUERY): QUERY_DATA + ",aMetric"])
 
         equalityOperation = truefalse ? {row1, row2 -> row1 == row2} : {row1, row2 -> row1 != row2}
     }

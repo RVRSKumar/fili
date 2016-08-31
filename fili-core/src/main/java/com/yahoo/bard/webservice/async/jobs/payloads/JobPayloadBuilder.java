@@ -28,7 +28,7 @@ public interface JobPayloadBuilder {
     /**
      * Get the job results url.
      * <pre>
-     *  "http://localhost:9998/async/ticket1/results"
+     *  "http://localhost:9998/jobs/ticket1/results"
      * </pre>
      *
      * @param ticket  The ticket that can uniquely identify a Job
@@ -45,7 +45,7 @@ public interface JobPayloadBuilder {
     /**
      * Get the url for obtaining the job results synchronously.
      * <pre>
-     *     "http://localhost:9998/async/ticket1/results?async=never"
+     *     "http://localhost:9998/jobs/ticket1/results?asyncAfter=never"
      * </pre>
      *
      * @param ticket  The ticket that can uniquely identify a Job
@@ -61,11 +61,11 @@ public interface JobPayloadBuilder {
     }
 
     /**
-     * Get the UriBuilder for the /job/ticket/results endpoint.
+     * Get the UriBuilder for the /jobs/ticket/results endpoint.
      *
      * @param uriInfo  UriInfo of the request
      *
-     * @return the UriBuilder for the /job/ticket/results endpoint
+     * @return the UriBuilder for the /jobs/ticket/results endpoint
      */
     static UriBuilder getResultsBaseUrl(UriInfo uriInfo) {
         return uriInfo.getBaseUriBuilder()
@@ -76,7 +76,7 @@ public interface JobPayloadBuilder {
     /**
      * Get the url for the given ticket.
      * <pre>
-     *     "http://localhost:9998/async/ticket1"
+     *     "http://localhost:9998/jobs/ticket1"
      * </pre>
      *
      * @param ticket  The ticket that can uniquely identify a Job

@@ -3,7 +3,6 @@
 package com.yahoo.bard.webservice.async.jobs.payloads
 
 import com.yahoo.bard.webservice.async.jobs.jobrows.DefaultJobField
-import com.yahoo.bard.webservice.async.jobs.payloads.DefaultJobPayloadBuilder
 import com.yahoo.bard.webservice.async.jobs.jobrows.JobField
 import com.yahoo.bard.webservice.async.jobs.jobrows.JobRow
 import com.yahoo.bard.webservice.web.JobRequestFailedException
@@ -32,20 +31,20 @@ class DefaultJobPayloadBuilderSpec extends Specification {
     def "JobRow is mapped correctly to the job to be displayed to the end user"() {
         setup:
         Map<JobField, String> fieldValueMap = [
-                (DefaultJobField.JOB_TICKET)  :"ticket1",
+                (DefaultJobField.JOB_TICKET):"ticket1",
                 (DefaultJobField.DATE_CREATED): "2016-01-01",
                 (DefaultJobField.DATE_UPDATED): "2016-01-01",
-                (DefaultJobField.QUERY)       : "https://localhost:9998/v1/data/QUERY",
-                (DefaultJobField.STATUS)      : "success",
-                (DefaultJobField.USER_ID)     : "momo"
+                (DefaultJobField.QUERY): "https://localhost:9998/v1/data/QUERY",
+                (DefaultJobField.STATUS): "success",
+                (DefaultJobField.USER_ID): "momo"
         ]
         JobRow jobRow = new JobRow(DefaultJobField.JOB_TICKET, fieldValueMap)
 
         Map<String, String> job = [
                 query: "https://localhost:9998/v1/data/QUERY",
-                results: "https://localhost:9998/v1/async/ticket1/results",
-                syncResults: "https://localhost:9998/v1/async/ticket1/results?asyncAfter=never",
-                self: "https://localhost:9998/v1/async/ticket1",
+                results: "https://localhost:9998/v1/jobs/ticket1/results",
+                syncResults: "https://localhost:9998/v1/jobs/ticket1/results?asyncAfter=never",
+                self: "https://localhost:9998/v1/jobs/ticket1",
                 status: "success",
                 jobTicket: "ticket1",
                 dateCreated: "2016-01-01"

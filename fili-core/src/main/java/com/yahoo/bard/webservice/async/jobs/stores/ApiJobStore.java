@@ -7,7 +7,7 @@ import com.yahoo.bard.webservice.async.jobs.jobrows.JobRow;
 import rx.Observable;
 
 /**
- * An ApiJobStore is responsible for storing the metadata about Bard async. Conceptually, the ApiJobStore is a table
+ * An ApiJobStore is responsible for storing the metadata about Bard jobs. Conceptually, the ApiJobStore is a table
  * where each row is the metadata of a particular job, and the columns are the metadata stored with each job
  * (such metadata may include date created, a link to results, etc). The table uses the job's id as the primary
  * key.

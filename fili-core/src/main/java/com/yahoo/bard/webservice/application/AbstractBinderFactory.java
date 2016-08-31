@@ -380,7 +380,7 @@ public abstract class AbstractBinderFactory implements BinderFactory {
     }
 
     /**
-     * Builds an instance of a BroadcastChannel that broadcasts the tickets of asynchronous async that have been
+     * Builds an instance of a BroadcastChannel that broadcasts the tickets of asynchronous jobs that have been
      * successfully stored in the PreResponseStore .
      *
      * @return A BroadcastChannel that allows Bard to talk to other Bard processes, by default returns the

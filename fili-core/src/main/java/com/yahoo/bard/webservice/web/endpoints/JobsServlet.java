@@ -66,7 +66,7 @@ import javax.ws.rs.core.UriInfo;
 /**
  * Resource code for job resource endpoints.
  */
-@Path("/async")
+@Path("/jobs")
 @Singleton
 public class JobsServlet extends EndpointServlet {
 
@@ -167,7 +167,7 @@ public class JobsServlet extends EndpointServlet {
             apiRequest.getJobViews()
                     .toList()
                     .map(jobs -> jobsApiRequest.getPage(paginationFactory.apply(jobs)))
-                    .map(result -> formatResponse(jobsApiRequest, result, "async", null))
+                    .map(result -> formatResponse(jobsApiRequest, result, "jobs", null))
                     .defaultIfEmpty(getResponse("{}"))
                     .onErrorReturn(this::getErrorResponse)
                     .subscribe(
@@ -238,7 +238,7 @@ public class JobsServlet extends EndpointServlet {
     }
 
     /**
-     * Endpoint to get a particular async result.
+     * Endpoint to get a particular job's result.
      *
      * @param ticket  The ticket that can uniquely identify a Job
      * @param format  Requested format of the response
