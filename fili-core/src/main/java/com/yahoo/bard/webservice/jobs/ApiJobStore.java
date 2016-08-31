@@ -4,6 +4,8 @@ package com.yahoo.bard.webservice.jobs;
 
 import rx.Observable;
 
+import java.util.Set;
+
 /**
  * An ApiJobStore is responsible for storing the metadata about Bard jobs. Conceptually, the ApiJobStore is a table
  * where each row is the metadata of a particular job, and the columns are the metadata stored with each job
@@ -49,4 +51,21 @@ public interface ApiJobStore {
      * @return An Observable that emits a stream of all the JobRows in the store
      */
     Observable<JobRow> getAllRows();
+
+    /**
+     * This method takes a Set of ApiJobStoreFilters, ANDS them by default, and returns a cold observable that emits a
+     * stream of JobRows which satisfy the given filter.
+     * <p>
+     * Every field may not be filterable for every implementation of the `ApiJobStore` as the efficiency of filtering is
+     * dependent on the backing store. An IllegalArgumentException is thrown if filtering on any given field is not
+     * supported.
+     *
+     * @param apiJobStoreFilters  A List of ApiJobStoreFilters where each ApiJobStoreFilter contains the JobField to be
+     * filtered on, the filter operation and the values to be compared to.
+     *
+     * @return An Observable that emits a stream of JobRows that satisfy the given filters
+     *
+     * @throws IllegalArgumentException if filtering on any field is not supported
+     */
+    Observable<JobRow> getFilteredRows(Set<ApiJobStoreFilter> apiJobStoreFilters) throws IllegalArgumentException;
 }

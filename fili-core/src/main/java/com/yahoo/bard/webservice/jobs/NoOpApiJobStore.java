@@ -4,6 +4,8 @@ package com.yahoo.bard.webservice.jobs;
 
 import rx.Observable;
 
+import java.util.Set;
+
 import javax.inject.Singleton;
 
 /**
@@ -27,5 +29,11 @@ public class NoOpApiJobStore implements ApiJobStore {
     @Override
     public Observable<JobRow> getAllRows() {
         return Observable.empty();
+    }
+
+    @Override
+    public Observable<JobRow> getFilteredRows(Set<ApiJobStoreFilter> apiJobStoreFilter)
+            throws IllegalArgumentException {
+                return Observable.empty();
     }
 }

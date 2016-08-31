@@ -9,7 +9,10 @@ Current
 -------
 
 ### Added:
-
+- [Enrich the ApiJobStore interface] (https://github.com/yahoo/fili/pull/23)
+    * `ApiJobStore` Interface now supports filtering `JobRows` in the store
+    * Added support for filtering JobRows in `HashJobStore`
+    * Added `ApiJobStoreFilter` to hold filter information
 
 ### Deprecated:
 
