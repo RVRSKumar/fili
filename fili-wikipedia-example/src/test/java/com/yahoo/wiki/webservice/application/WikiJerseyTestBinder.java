@@ -20,7 +20,7 @@ public class WikiJerseyTestBinder extends JerseyTestBinder {
     /**
      * Constructor.
      *
-     * @param resourceClasses  Resource classes to load into the application..
+     * @param resourceClasses  Resource classes to load into the application.
      */
     public WikiJerseyTestBinder(java.lang.Class<?>... resourceClasses) {
         this(true, resourceClasses);
